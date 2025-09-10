@@ -22,7 +22,7 @@ Keyrock GUI と REST API の部分について詳しく説明します。
 きます。
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6b143a6b3ad8bcba69cf)
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-v2)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?repo=FIWARE/tutorials.PEP-Proxy&ref=NGSI-v2)
 
 ## コンテンツ
 
