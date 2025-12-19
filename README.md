@@ -11,18 +11,10 @@ The project currently uses the **Orion-Wilma** architecture, which provides:
 - **Orion Context Broker**: NGSI-v2 context broker for managing context information
 - **IoT Agent UltraLight**: Protocol adapter for IoT devices
 - **Keyrock**: Identity Management system for authentication and authorization
-- **Wilma PEP Proxy**: Policy Enforcement Point protecting Orion access
+- **Wilma PEP Proxy**: PEP proxy protecting Orion access
 - **SSIO Gateway**: Custom backend service that integrates with all FIWARE components
 - **MongoDB**: Database for Orion and IoT Agent
 - **MySQL**: Database for Keyrock
-
-### Component Flow
-
-```
-Client → Gateway (Port 3000) → Keyrock (Auth) → PEP Proxy (Port 1027) → Orion (Port 1026)
-                               ↓
-                         IoT Agent (Port 4041/7896)
-```
 
 ### Future Architectures
 
@@ -45,28 +37,28 @@ Configuration files are available in `docker-compose/`:
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd tutorials.PEP-Proxy
+git clone https://github.com/Yanis02/ssio-project-full-backend.git
+cd ssio-project-full-backend
 ```
 
-2. Start all services:
-
-**PowerShell (Windows):**
-```powershell
-Get-Content .env | ForEach-Object { if ($_ -notmatch '^#' -and $_ -match '=') { $name, $value = $_ -split '=', 2; [Environment]::SetEnvironmentVariable($name, $value, 'Process') } }; docker-compose -f docker-compose/orion-wilma.yml up -d
-```
-
-**Bash (Linux/Mac):**
+2. Create environment file:
 ```bash
-./services orion
+# Create .env file and copy the contents from .env.example
+# Note: This is for primary testing only - environment variables will be updated later
+cp .env.example .env
 ```
 
-3. Wait for all services to be healthy (approximately 30-60 seconds)
+3. Start all services:
+```bash
+docker-compose -f docker-compose/orion-wilma.yml up -d
+```
+
+4. Wait for all services to be healthy (approximately 30-60 seconds)
 
 ## Accessing the Services
 
 ### Gateway API Documentation
-Access the interactive API documentation (Swagger/OpenAPI):
+Access the interactive API documentation (Swagger):
 
 **🔗 [http://localhost:3000/api/docs](http://localhost:3000/api/docs)**
 
@@ -95,18 +87,6 @@ The SSIO Gateway provides:
 - Secure communication with Orion through PEP Proxy
 - IoT Agent integration for device management
 - RESTful API with comprehensive documentation
-
-## Services Breakdown
-
-| Service | Container Name | Port | Description |
-|---------|---------------|------|-------------|
-| Gateway | ssio-gateway | 3000 | Custom backend API |
-| Keyrock | fiware-keyrock | 3005 | Identity Management |
-| Orion | fiware-orion | 1026 | Context Broker |
-| PEP Proxy | fiware-orion-proxy | 1027 | Policy Enforcement |
-| IoT Agent | fiware-iot-agent | 4041, 7896 | Device Protocol Adapter |
-| MongoDB | db-mongo | 27017 | Orion/IoT Agent Database |
-| MySQL | db-mysql | 3307 | Keyrock Database |
 
 ## Stopping the Services
 
