@@ -50,7 +50,7 @@ cp .env.example .env
 
 3. Start all services:
 ```bash
-docker-compose -f docker-compose/orion-wilma.yml up -d
+docker-compose -f docker-compose/orion-wilma.yml --env-file .env up -d
 ```
 
 4. Wait for all services to be healthy (approximately 30-60 seconds)
@@ -91,12 +91,12 @@ The SSIO Gateway provides:
 ## Stopping the Services
 
 ```bash
-docker-compose -f docker-compose/orion-wilma.yml down
+docker-compose -f docker-compose/orion-wilma.yml --env-file .env down
 ```
 
 To also remove volumes (databases):
 ```bash
-docker-compose -f docker-compose/orion-wilma.yml down -v
+docker-compose -f docker-compose/orion-wilma.yml --env-file .env down -v
 ```
 
 ## Development Status
