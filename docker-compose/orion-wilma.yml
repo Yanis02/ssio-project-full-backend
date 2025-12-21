@@ -151,7 +151,7 @@ services:
   gateway:
     labels:
       org.fiware: 'tutorial'
-    image: yanisdjouima756/ssio-project-gateway:latest
+    image: zineddinen/ssio-project-gateway:latest
     container_name: ssio-gateway
     hostname: gateway
     networks:
