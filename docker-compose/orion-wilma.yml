@@ -147,7 +147,7 @@ services:
     healthcheck:
       interval: 50s
 
-  # Gateway service
+  # Gateway service 
   gateway:
     labels:
       org.fiware: 'tutorial'
@@ -175,8 +175,7 @@ services:
       - IOT_AGENT_URL=http://iot-agent:4041
       - FIWARE_SERVICE=${FIWARE_SERVICE}
       - FIWARE_SERVICE_PATH=${FIWARE_SERVICE_PATH}
-
-      node-exporter:
+  node-exporter:
          image: prom/node-exporter:latest
          container_name: node-exporter
          restart: unless-stopped
