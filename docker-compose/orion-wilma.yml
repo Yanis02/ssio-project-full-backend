@@ -176,6 +176,17 @@ services:
       - FIWARE_SERVICE=${FIWARE_SERVICE}
       - FIWARE_SERVICE_PATH=${FIWARE_SERVICE_PATH}
 
+      node-exporter:
+         image: prom/node-exporter:latest
+         container_name: node-exporter
+         restart: unless-stopped
+         network_mode: "host"
+         pid: "host"
+         volumes:
+           - /proc:/host/proc:ro
+           - /sys:/host/sys:ro
+           - /:/rootfs:ro
+
   # Tutorial acts as a series of dummy IoT Sensors over HTTP
   # tutorial:
   #   labels:
