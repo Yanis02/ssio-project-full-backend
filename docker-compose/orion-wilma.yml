@@ -164,15 +164,15 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - KEYROCK_URL=http://keyrock:3005
+      - KEYROCK_URL=http://localhost:3005
       - KEYROCK_APP_ID=${KEYROCK_APP_ID}
       - KEYROCK_CLIENT_ID=${KEYROCK_CLIENT_ID}
       - KEYROCK_CLIENT_SECRET=${KEYROCK_CLIENT_SECRET}
       - KEYROCK_CALLBACK_URL=http://localhost:3000/auth/callback
       - JWT_SECRET=${JWT_SECRET}
       - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
-      - PEP_PROXY_URL=http://orion-proxy:1027
-      - IOT_AGENT_URL=http://iot-agent:4041
+      - PEP_PROXY_URL=http://localhost:1027
+      - IOT_AGENT_URL=http://localhost:4041
       - FIWARE_SERVICE=${FIWARE_SERVICE}
       - FIWARE_SERVICE_PATH=${FIWARE_SERVICE_PATH}
 
