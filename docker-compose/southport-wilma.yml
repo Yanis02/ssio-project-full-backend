@@ -304,7 +304,7 @@ services:
         ipv4_address: 172.18.1.6
     environment:
       - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my_secret_data"
-      - "MYSQL_ROOT_HOST=172.18.1.5" # Allow Keyrock to access this database
+      - "MYSQL_ROOT_HOST=%" # Allow Keyrock to access this database from any host
     volumes:
       - mysql-db:/var/lib/mysql
       - ../mysql-data:/docker-entrypoint-initdb.d/:ro
