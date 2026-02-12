@@ -179,7 +179,7 @@ services:
     image: zineddinen/ssio-project-frontend:latest
     container_name: frontend
     ports:
-      - "3001:80" # port hôte libre
+      - "8080:80" # port hôte libre
     depends_on:
       - gateway
     networks:
