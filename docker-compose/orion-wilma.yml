@@ -164,7 +164,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - KEYROCK_URL=http://keyrock:3005
+      - KEYROCK_URL=http://fiware-keyrock:3005
       - KEYROCK_APP_ID=${KEYROCK_APP_ID}
       - KEYROCK_CLIENT_ID=${KEYROCK_CLIENT_ID}
       - KEYROCK_CLIENT_SECRET=${KEYROCK_CLIENT_SECRET}
