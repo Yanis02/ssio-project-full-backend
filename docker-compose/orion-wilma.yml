@@ -185,8 +185,7 @@ services:
       - gateway
     networks:
       - default
-    environment:
-      - VITE_API_URL=http://gateway:3000
+   
   node-exporter:
          image: prom/node-exporter:latest
          container_name: node-exporter
