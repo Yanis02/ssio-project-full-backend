@@ -176,7 +176,7 @@ services:
       - FIWARE_SERVICE=${FIWARE_SERVICE}
       - FIWARE_SERVICE_PATH=${FIWARE_SERVICE_PATH}
   frontend:
-    image: zineddinen/ssio-project-frontend:latest
+    image: zineddinen/ssio-project-frontend:3f5c9e8
     container_name: frontend
     ports:
       - "8080:80" # port hôte libre
