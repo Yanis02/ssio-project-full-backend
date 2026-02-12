@@ -175,6 +175,17 @@ services:
       - IOT_AGENT_URL=http://localhost:4041
       - FIWARE_SERVICE=${FIWARE_SERVICE}
       - FIWARE_SERVICE_PATH=${FIWARE_SERVICE_PATH}
+  frontend:
+    image: zineddinen/ssio-project-frontend:latest
+    container_name: frontend
+    ports:
+      - "3001:80" # port hôte libre
+    depends_on:
+      - gateway
+    networks:
+      - default
+    environment:
+      - VITE_API_URL=http://gateway:3000
   node-exporter:
          image: prom/node-exporter:latest
          container_name: node-exporter
