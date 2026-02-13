@@ -187,7 +187,7 @@ services:
     networks:
       - default
     IA:
-    image: zineddinen/ssio-ia:latest
+    image: zineddinen/ssio-project-ia:latest
     container_name: ssio-ia
     ports:
       - "8000:8000"
