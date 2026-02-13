@@ -186,7 +186,14 @@ services:
       - gateway
     networks:
       - default
-   
+    IA:
+    image: zineddinen/ssio-ia:latest
+    container_name: ssio-ia
+    ports:
+      - "8000:8000"
+    networks:
+      - default
+
   node-exporter:
          image: prom/node-exporter:latest
          container_name: node-exporter
