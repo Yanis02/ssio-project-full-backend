@@ -186,7 +186,7 @@ services:
       - gateway
     networks:
       - default
-    IA:
+  IA:
     image: zineddinen/ssio-project-ia:latest
     container_name: ssio-ia
     ports:
