@@ -212,7 +212,29 @@ services:
       - IOT_AGENT_SOUTH_PROXY_URL=http://iot-agent-proxy:7897
       - FIWARE_SERVICE=${FIWARE_SERVICE}
       - FIWARE_SERVICE_PATH=${FIWARE_SERVICE_PATH}
-
+  #frontend
+  frontend:
+    image: zineddinen/ssio-project-frontend:latest
+    container_name: frontend
+    pull_policy: always
+    ports:
+      - "8080:80" # port hôte libre
+    depends_on:
+      - gateway
+    networks:
+      - default
+  # node exporter
+  node-exporter:
+         image: prom/node-exporter:latest
+         container_name: node-exporter
+         restart: unless-stopped
+         network_mode: "host"
+         pid: "host"
+         volumes:
+           - /proc:/host/proc:ro
+           - /sys:/host/sys:ro
+           - /:/rootfs:ro
+ 
   # Tutorial acts as a series of dummy IoT Sensors over HTTP (commented out - conflicts with gateway on port 3000)
   # tutorial:
   #   labels:

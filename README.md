@@ -24,7 +24,7 @@ The project structure supports future implementations of:
 
 Configuration files are available in `docker-compose/`:
 - `northport-wilma.yml`
-- `southport-wilma.yml`
+- `orion-wilma.yml`
 
 ## Quick Start
 
@@ -50,7 +50,7 @@ cp .env.example .env
 
 3. Start all services:
 ```bash
-docker-compose -f docker-compose/orion-wilma.yml --env-file .env up -d
+docker-compose -f docker-compose/southport-wilma.yml --env-file .env up -d
 ```
 
 4. Wait for all services to be healthy (approximately 30-60 seconds)
