@@ -337,9 +337,20 @@ services:
 
   flow-generator:
     image: flow-generator-server:latest
+    container_name: flow-generator
+    networks:
+      - default
+    ports:
+      - "8001:8001"
 
   ids-server:
     image: ids-server:latest
+    container_name: ids-server
+    networks:
+      - default
+    ports:
+      - "8000:8000"
+    
 
 networks:
   default:
