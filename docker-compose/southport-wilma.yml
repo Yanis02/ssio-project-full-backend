@@ -236,56 +236,6 @@ services:
            - /proc:/host/proc:ro
            - /sys:/host/sys:ro
            - /:/rootfs:ro
- 
-  # Tutorial acts as a series of dummy IoT Sensors over HTTP (commented out - conflicts with gateway on port 3000)
-  # tutorial:
-  #   labels:
-  #     org.fiware: 'tutorial'
-  #   image: quay.io/fiware/tutorials.context-provider
-  #   hostname: iot-sensors
-  #   container_name: fiware-tutorial
-  #   depends_on:
-  #     orion-proxy:
-  #       condition: service_started
-  #     iot-agent:
-  #       condition: service_started
-  #     keyrock:
-  #       condition: service_started
-  #   networks:
-  #     default:
-  #       ipv4_address: 172.18.1.7
-  #       aliases:
-  #         - tutorial
-  #         - context-provider
-  #   expose:
-  #     - "${TUTORIAL_APP_PORT}"
-  #     - "${TUTORIAL_DUMMY_DEVICE_PORT}"
-  #   ports:
-  #     - "${TUTORIAL_APP_PORT}:${TUTORIAL_APP_PORT}" # localhost:3000
-  #     - "${TUTORIAL_DUMMY_DEVICE_PORT}:${TUTORIAL_DUMMY_DEVICE_PORT}" # localhost:3001
-  #   environment:
-  #     - "MONGO_URL=mongodb://mongo-db:27017"
-  #     - "DEBUG=tutorial:*"
-  #     - "WEB_APP_PORT=${TUTORIAL_APP_PORT}" # Port used by the content provider proxy and web-app for viewing data
-  #     - "IOTA_HTTP_HOST=iot-agent-proxy"
-  #     - "IOTA_HTTP_PORT=7897"
-  #     - "IOTA_DEFAULT_RESOURCE=/iot/d"
-  #     - "DUMMY_DEVICES_PORT=${TUTORIAL_DUMMY_DEVICE_PORT}" # Port used by the dummy IOT devices to receive commands
-  #     - "DUMMY_DEVICES_TRANSPORT=HTTP" # Default transport used by dummy Io devices
-  #     - "DUMMY_DEVICES_USER=iot_sensor_00000000-0000-0000-0000-000000000000"
-  #     - "DUMMY_DEVICES_PASSWORD=test"
-  #     - "CONTEXT_BROKER=http://orion-proxy:${ORION_PROXY_PORT}/v2" # URL of the PEP Proxy to update context
-  #     - "OPENWEATHERMAP_KEY_ID=<ADD_YOUR_KEY_ID>"
-  #     - "TWITTER_CONSUMER_KEY=<ADD_YOUR_CONSUMER_KEY>"
-  #     - "TWITTER_CONSUMER_SECRET=<ADD_YOUR_CONSUMER_SECRET>"
-  #     - "NGSI_LD_PREFIX="
-  #     - "SECURE_ENDPOINTS=true"
-  #     - "KEYROCK_URL=http://localhost"
-  #     - "KEYROCK_IP_ADDRESS=http://172.18.1.5"
-  #     - "KEYROCK_PORT=${KEYROCK_PORT}"
-  #     - "KEYROCK_CLIENT_ID=tutorial-dckr-site-0000-xpresswebapp"
-  #     - "KEYROCK_CLIENT_SECRET=tutorial-dckr-site-0000-clientsecret"
-  #     - "CALLBACK_URL=http://localhost:${TUTORIAL_APP_PORT}/login"
 
 
   # Database
@@ -343,9 +293,9 @@ services:
     ports:
       - "8001:8001"
 
-  ids-server:
+  IA:
     image: zineddinen/ids-server:latest
-    container_name: ids-server
+    container_name: IA
     networks:
       - default
     ports:
@@ -353,6 +303,9 @@ services:
     restart: unless-stopped
     depends_on:
         - gateway
+        - flow-generator
+    environment:
+      - GENERATOR_BASE_URL=http://flow-generator:8001
     
 
 networks:
