@@ -344,7 +344,7 @@ services:
       - "8001:8001"
 
   ids-server:
-    image: ids-server:latest
+    image: ids-server-new:latest
     container_name: ids-server
     networks:
       - default
