@@ -336,7 +336,7 @@ services:
       - my_secret_data
 
   flow-generator:
-    image: flow-generator-server:latest
+    image: zineddinen/flow-generator-server:latest
     container_name: flow-generator
     networks:
       - default
@@ -344,7 +344,7 @@ services:
       - "8001:8001"
 
   ids-server:
-    image: ids-server:latest
+    image: zineddinen/ids-server:latest
     container_name: ids-server
     networks:
       - default
