@@ -340,6 +340,12 @@ services:
     secrets:
       - my_secret_data
 
+  flow-generator:
+    image: flow-generator-server:latest
+
+  ids-server:
+    image: ids-server:latest
+
 networks:
   default:
     labels:
