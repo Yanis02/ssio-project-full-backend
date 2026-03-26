@@ -302,12 +302,12 @@ services:
       - "8000:8000"
     restart: unless-stopped
     depends_on:
-        - gateway
-        - flow-generator
-  environment:
-    - GENERATOR_BASE_URL=http://flow-generator:8001
-    - PORT=8000
-    - HOST=0.0.0.0
+      - gateway
+      - flow-generator
+    environment:
+      - GENERATOR_BASE_URL=http://flow-generator:8001
+      - PORT=8000
+      - HOST=0.0.0.0
  
     
 
