@@ -306,9 +306,7 @@ services:
         - flow-generator
     environment:
       - GENERATOR_BASE_URL=http://flow-generator:8001
-    env_file: ./.env.ids
-    volumes:
-      - ./models:/app/models:ro
+ 
     
 
 networks:
