@@ -292,7 +292,7 @@ services:
       - default
     ports:
       - "8001:8001"
-
+      
   IA:
     image: zineddinen/ids-server:latest
     container_name: IA
@@ -308,6 +308,10 @@ services:
       - GENERATOR_BASE_URL=http://flow-generator:8001
       - PORT=8000
       - HOST=0.0.0.0
+      - MAX_PREDICTIONS=1000
+      - MODEL_PATH=models/rf_ids_model.pkl
+      - LABEL_ENCODER_PATH=models/label_encoder.pkl
+      
  
     
 
